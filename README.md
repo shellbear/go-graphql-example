@@ -2,6 +2,8 @@
 
 An example go web server implementing a GraphQL api with a Sqlite database.
 
+**Read the full article: https://shellbear.me/blog/go-graphql-api**
+
 ![gopher](.github/images/gopher.jpg)
 
 ## Usage
@@ -29,6 +31,37 @@ After making changes to `ent/schema` or `graph` directory make sure to run the g
 ```shell
 go generate ./...
 ```
+
+## Database
+
+Database models are handled with [ent](https://entgo.io/).
+
+Follow the [instructions](https://entgo.io/docs/getting-started/) to install the ent CLI.
+
+To add a new model:
+```shell
+ent init [Model]
+```
+
+And start editing the new Model schema in `ent/schema/[model].go`.
+
+Then run the code generation tool:
+```shell
+go generate ./...
+```
+
+## GraphQL
+
+GraphQL API is managed with [gqlgen](https://gqlgen.com/).
+
+To update the API, edit the schema in `graph/schema.graphqls` or a create a new schema named: `graph/*.graphqls`.
+
+After making changes, run the code generation tool:
+```shell
+go generate ./...
+```
+
+And implement code logic inside `graph/[schema].resolers.go`.
 
 ## Built with
 
